@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Xtract Connection"
+  DTS:DTSID="{3328C9F9-349D-4F20-91B3-7DF2DCEEDA61}"
+  DTS:CreationName="XTRACT">
+  <DTS:ObjectData>
+    <XtractConnectionManager
+      ConnectByProxy="False">
+      <AppServer>kbwprd.kissusa.com</AppServer>
+      <Client>100</Client>
+      <User>DCOE_00</User>
+      <Password
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAXNBuRlKAh06sU07yF0s0lAAAAAACAAAAAAAQZgAAAAEAACAAAADKFYKB9DJLP4OITnUA497etwXS3bJK//qhCI7H5uz+nQAAAAAOgAAAAAIAACAAAADsLVxS9l6Do0nVwntV9P9nsjCOVGf0Uxbalw/UkJqlfDAAAACqfZMV3yFZJ3y52H/ZNZQjJX07RS1/OdjInA3KmknlOH5NP9o46va2qYcyqivs5KBAAAAAwvaU4X3VxtqCEMVAGn+Ddya+hIlDJk4LUKo8MTpOW+afdzv9hQBl9lz2alB1PrT3kD9wlkuEnI9lwXXWicmRtw==</Password>
+      <Language>EN</Language>
+    </XtractConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

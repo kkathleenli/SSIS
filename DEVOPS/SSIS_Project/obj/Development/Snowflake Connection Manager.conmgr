@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Snowflake Connection Manager"
+  DTS:DTSID="{6E56DAC4-5404-4031-9F62-52474BE89B5B}"
+  DTS:CreationName="Snowflake (KingswaySoft)">
+  <DTS:ObjectData>
+    <ConnectionManager
+      ConnectionString="ProxyMode=NoProxy;ProxyUsername=;ProxyServer=;ProxyServerPort=0;AuthenticationType=Basic;Account=shb67190.us-east-1.snowflakecomputing.com;Authenticator=snowflake;User=chli;Warehouse=COMPUTE_WH;Role=ACCOUNTADMIN;RetryOnIntermittentErrors=True;IgnoreCertificateErrors=False;Timeout=120"
+      ConnectByProxy="False">
+      <Password
+        Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAXNBuRlKAh06sU07yF0s0lAAAAAACAAAAAAAQZgAAAAEAACAAAAAYEYv85gobGREMvmtVr+pg1bCp/2uX2WJuurHQgsfZVwAAAAAOgAAAAAIAACAAAACCQYny5B1/RtiBgsV7/mHSUH/+5MPDeDnhopWkCYT+U2AAAAB1yoekJoWwlCLe67uk9T6zTwAnCDTpGUm1YsI4LbMmJZDRYQK4Fj6yZFkW4CmVUHBeGWsRfYz2ijUzk25WtjjQMgBFJc62EbA+OqDoorJPM6YdjWSZtOMWQQmnrFBvBFtAAAAAndG0CIltF7eew7bTrm4CepKixBlFJwE8R38By3HadhjNVe2nd0ySGWghX9qSHL9cV2zpSJ4XjIlnOPmdSJwJHw==</Password>
+    </ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

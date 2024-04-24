@@ -9,3 +9,5 @@ select case when COUNT(CHECK_VALUE) > 0 then 'not change' else 'change' end
 from temp
 
 {% endmacro %}
+
+

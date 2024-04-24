@@ -1,12 +1,7 @@
-{{config(materialized='table')}}
-
 --{% if is_incremental() %}
---    DROP TABLE IF EXISTS TEST.TEMP.TEST_DBT_BILLING;
+--    DROP TABLE IF EXISTS {{ ref('duplicated_table_name') }};
 --{% endif %}
 
--- Create the new table
-CREATE TABLE TEST.TEMP.TEST_DBT_BILLING AS (
-    SELECT *
-    FROM TEST.TEMP.TEST_BILLING_CL_20240403
-)
 
+SELECT *
+FROM {{ source('snowflake_TEST', 'TEST_BILLING_CL_20240403_BACKUP') }}

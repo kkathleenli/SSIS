@@ -3,10 +3,6 @@ version: 2
 
 models:
     - name: create_new_zsd_c01
-      description: "query zsd_c01"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+    - name: change_data_type
+
+

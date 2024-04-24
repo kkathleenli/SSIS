@@ -1,0 +1,18 @@
+
+version: 2
+
+sources:
+    - name: snowflake_KDB
+      database: KDB
+      schema: PBI_SF
+      tables:
+        - name: ZSD_C01_BILLING
+        - name: "0CUST_SALES"
+    - name: snowflake_TEST
+      database: TEST
+      schema: TEMP
+      tables:
+        - name: TEST_BILLING_CL_20240403
+        - name: TEST_CUS_SALES_CL_20240325
+        - name: TEST_BILLING_CL_20240403_BACKUP
+

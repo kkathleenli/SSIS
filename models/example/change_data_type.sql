@@ -13,4 +13,5 @@
     {%- endif -%}
 {%- endfor -%}
 
-data_type_condition_check("0CALDAY")
+select *
+from {{data_type_condition_check({{col_name}})}}

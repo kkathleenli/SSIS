@@ -1,7 +1,7 @@
 {%- set to_date=['"0CALDAY"','"0DOC_DATE"','"0CREATEDON"','"0PSTNG_DATE"'] -%}
 
 {%- for col_name in to_date -%}
-    {%- set condition_result = {{data_type_condition_check({{ col_name }})}} -%}
+    {%- set condition_result = {{ data_type_condition_check( {{ col_name }} ) }} -%}
     {%- set status = condition_result.rows[0][0] if condition_result.rows|length > 0 else 'not change' -%}
 
     {%- if status == 'change' -%}
@@ -13,3 +13,4 @@
     {%- endif -%}
 {%- endfor -%}
 
+data_type_condition_check("0CALDAY")

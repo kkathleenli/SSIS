@@ -20,7 +20,7 @@ models:
                 - unique
                 - not_null
 
-    - name: create_table_test.sql
+    - name: create_table_test
       description: "A starter dbt model"
       columns:
           - name: id
@@ -28,3 +28,12 @@ models:
             tests:
                 - unique
                 - not_null             
+
+    - name: create_table_by_clone
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null   

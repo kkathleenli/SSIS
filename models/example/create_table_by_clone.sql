@@ -2,7 +2,7 @@
 
 with create_by_clone as (
     select *
-    from KDB.PBI_SF.ZSD_C01_BILLING_EUR 
+    from TEST.TEMP.TEST_BILLING_CL_20240403 
 )
 select *
 from create_by_clone

@@ -5,9 +5,6 @@ models:
 
     - name: create_table_by_clone
       description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"  
     
     - name: change_data_type
       description: " change to date"

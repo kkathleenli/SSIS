@@ -14,4 +14,3 @@ sources:
       tables:
         - name: TEST_BILLING_CL_20240403
         - name: TEST_CUS_SALES_CL_20240325
-        - name: TEST_BILLING_CL_20240403_BACKUP

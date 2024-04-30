@@ -14,3 +14,5 @@ sources:
       tables:
         - name: TEST_BILLING_CL_20240403
         - name: TEST_CUS_SALES_CL_20240325
+        - name: TEST_OBJ_ZSDC01_KH_20240418
+        - name: TEST_OBJ_KH_20240418

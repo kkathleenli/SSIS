@@ -1,30 +1,32 @@
--- models/example/billing_col_rename.sql
--- depends_on: {{ ref('change_data_type') }}
-
-{% set to_date=['"0CALDAY"','"0DOC_DATE"','"0CREATEDON"','"0PSTNG_DATE"'] %}
-{% for col_name in to_date %}
-
-{% call statement('get_target_',fetch_result=True) %}
-    select case when COUNT(CHECK_VALUE) > 0 then 'not change' else 'change' end
-    from (
-    SELECT DISTINCT {{col_name}} AS CHECK_VALUE 
-    FROM {{ ref("create_table_by_clone") }}
-    WHERE {{col_name}} LIKE '%#%'
-    )
+{% call statement('get_target_col_name',fetch_result=True) %}
+    SELECT D.*,C.TXTSH,C.TXTLG
+    FROM TEST.TEMP.TEST_OBJ_ZSDC01_KH_20240418 D
+    INNER JOIN  TEST.TEMP.TEST_OBJ_KH_20240418 C
+    ON C.IOBJNM=D.IOBJNM AND C.OBJVERS=D.OBJVERS
+    WHERE LANGU='E'
 {% endcall %}
 
-{% set results = load_result('query')['data'][0][0] %}
+{% set column_mapping = load_result('get_target_col_name') %}
 
-{% if results == 'change' %}
-{% call statement(change_to_date,fetch_result=True) -%}
-    ALTER TABLE {{ ref("create_table_by_clone") }} ADD COLUMN COLUMN_NAME_TEMP DATE;
-    UPDATE {{ ref("create_table_by_clone") }} 
-    SET COLUMN_NAME_TEMP = TO_DATE({{col_name}});
-    ALTER TABLE {{ ref("create_table_by_clone") }} DROP COLUMN {{col_name}};
-    ALTER TABLE {{ ref("create_table_by_clone") }} RENAME COLUMN COLUMN_NAME_TEMP to {{col_name}};
-{% endcall %}
-{% endif %}
+{% set target_billing = adapter.get_columns_in_relation( ref("create_table_by_clone")) %}
+
+{% set new_col_name={} %}
+{% for i in target_billing %}
+    {% for row in column_mapping %}
+       {% if i.name.startswith('2') and '2' ~ row.IOBJNM == i.name %}
+       {% set _ = new_col_name.update({i.name: (row.TXTSH ~ '_key').replace(' ', '_')}) %}
+       {% elif (i.name.startswith('5') and '5' ~ row.IOBJNM == i.name) or (i.name.startswith('0') and i.name == row.IOBJNM) or (i.name.startswith('Z') and i.name == row.IOBJNM) %}
+       {% set _ = new_col_name.update({i.name: row.TXTSH.replace(' ', '_')}) %}
+       {% endif %}
+    {% endfor %}
 {% endfor %}
+
+{% for k, v in new_col_name.items() %}
+    {% call statement(change_name,fetch_result=True) -%}
+    alter table {{ ref("create_table_by_clone") }} rename column {{ k }} to {{ v }};
+    {% endcall %}
+{% endfor %} 
 
 select *
 from {{ ref("create_table_by_clone") }}
+

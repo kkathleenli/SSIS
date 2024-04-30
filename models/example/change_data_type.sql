@@ -18,7 +18,8 @@
     {% if results == 'change' and not loop.last %}
     {% call statement(change_to_date) -%}
     ALTER TABLE {{ ref("create_table_by_clone") }} ADD COLUMN COLUMN_NAME_TEMP DATE;
-    UPDATE {{ ref("create_table_by_clone") }} COLUMN_NAME_TEMP = TO_DATE({{col_name}});
+    UPDATE {{ ref("create_table_by_clone") }} 
+    SET COLUMN_NAME_TEMP = TO_DATE({{col_name}});
     ALTER TABLE {{ ref("create_table_by_clone") }} DROP COLUMN {{col_name}};
     ALTER TABLE {{ ref("create_table_by_clone") }} RENAME COLUMN COLUMN_NAME_TEMP to {{col_name}};
     {% endcall %}
